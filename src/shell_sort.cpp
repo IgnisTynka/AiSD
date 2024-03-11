@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <memory>
 
 std::vector<int> shell_sort(std::vector<int> array) {
     int temp;

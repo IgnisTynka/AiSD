@@ -11,7 +11,7 @@ benchmark() {
     runpython=""
     runcpp="../target/debug/main"
     runexample="python3 example.py"
-    runcurrent=$runexample
+    runcurrent=$runcpp
 
     echo "Benchmarking Algorithm $algorithm with input $input_file"
     result=$(/usr/bin/time -f "%e" ${runcurrent} --algorithm $algorithm < $input_file 2>&1 >/dev/null)
@@ -43,8 +43,8 @@ done
 
 
 # List of input file types
-#input_files=("random_array" "increasing_array" "decreasing_array" "constant_array" "a_shaped_array")
-input_files=("random_array")
+input_files=("random_array" "increasing_array" "decreasing_array" "constant_array" "a_shaped_array")
+# input_files=("random_array")
 
 # Create or clear the CSV file
 echo "Algorithm,InputSize,Time" > benchmark_results.csv
