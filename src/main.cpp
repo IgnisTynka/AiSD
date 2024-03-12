@@ -79,4 +79,4 @@ int main(int argc, char const *argv[]) {
     print_array(sorted_array);
     
     return 0;
-} 
+}  
