@@ -89,10 +89,6 @@ int main(int argc, char const *argv[]) {
     // Perform sorting using the specified algorithm
     std::vector<int> sorted_data = sort_using_algorithm(data, algorithm_number);
 
-    // Print the sorted data (first 10 elements for simplicity)
-    std::cout << "Sorted data: ";
-    print_array(sorted_data);
-
     return 0;
 }  
 
