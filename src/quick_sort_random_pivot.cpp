@@ -1,37 +1,37 @@
 #include "sort.h"
 #include <memory>
-#include <cstdlib>
+#include <cstdlib> 
+#include <ctime>   
 
-void quick_sort_random(std::vector<int> &array, size_t left, size_t right)
-{
-    if(left >= right){
-        return;
+int random_partition(std::vector<int> &array, int low, int high) {
+    // Generate a random index within the range [low, high]
+    srand(time(NULL)); // Seed the random number generator
+    int randomIndex = low + rand() % (high - low + 1);
+
+    // Swap the randomly selected element with the first element (low)
+    std::swap(array[randomIndex], array[low]);
+    int pivot = array[low];
+    int i = high + 1; 
+
+    for (int j = high; j > low; j--) {
+        if (array[j] >= pivot) {
+            i--;
+            std::swap(array[i], array[j]);
+        }
     }
-	
-	int i = left -1 , j = right + 1, 
-    // select the pivot element
-	pivot = array[rand() % (right - left + 1) + left]; 
-	
+    // Move pivot to its correct position
+    std::swap(array[i - 1], array[low]); 
+    return (i - 1);
+}
 
-	while(1)
-	{
-        // find the element greater or equal to the pivot
-		while(pivot>array[++i]);
-
-		// find the element smaller or equal to the pivot
-		while(pivot<array[--j]);
-		
-        // if the counters have not crossed, swap the elements
-		if( i <= j){
-			std::swap(array[i],array[j]);
-        }else{
-			break;}
-	}
-
-	if(j > left)
-	    quick_sort_random(array, left, j);
-	if(i < right)
-	    quick_sort_random(array, i, right);
+void quick_sort_random(std::vector<int> &array, int low, int high) {
+    if (low < high) {
+        // pi is the partition return index of pivot
+        int pi = random_partition(array, low, high);
+        // Recursion Call smaller element than pivot goes left and higher element goes right
+        quick_sort_random(array, low, pi - 1);
+        quick_sort_random(array, pi + 1, high);
+    }
 }
 
 std::vector<int> quick_sort_random_pivot(std::vector<int> array) {

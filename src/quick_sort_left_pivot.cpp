@@ -1,37 +1,37 @@
 #include "sort.h"
 #include <memory>
 
-void quick_sort_left(std::vector<int> &array, size_t left, size_t right)
+int partition(std::vector<int> &array,int low,int high)
 {
-    if(left >= right){
-        return;
+	//choose the pivot
+	int pivot = array[low];
+    int i = high + 1;
+
+	// Rearrange the array so that all elements with values less than the pivot come before the pivot
+    for (int j = high; j > low; j--) {
+        if (array[j] >= pivot) {
+            i--;
+            std::swap(array[i], array[j]);
+        }
     }
-	
-	int i = left -1 , j = right + 1, 
-    // select the pivot element
-	pivot = array[left]; 
-	
-
-	while(1)
-	{
-        // find the element greater or equal to the pivot
-		while(pivot>array[++i]);
-
-		// find the element smaller or equal to the pivot
-		while(pivot<array[--j]);
-		
-        // if the counters have not crossed, swap the elements
-		if( i <= j){
-			std::swap(array[i],array[j]);
-        }else{
-			break;}
-	}
-
-	if(j > left)
-	    quick_sort_left(array, left, j);
-	if(i < right)
-	    quick_sort_left(array, i, right);
+	// Move pivot to its correct position
+    std::swap(array[i - 1], array[low]); 
+    return (i - 1);
 }
+            
+void quick_sort_left(std::vector<int> &array,int low,int high)
+{
+	if(low<high)
+	{
+		// pi is the partition return index of pivot
+		int pi=partition(array,low,high);
+		//Recursion Call smaller element than pivot goes left and higher element goes right
+		quick_sort_left(array,low,pi-1);
+		quick_sort_left(array,pi+1,high);
+	}
+}
+  
+
 
 std::vector<int> quick_sort_left_pivot(std::vector<int> array) {
     // Call the quick_sort_left function
