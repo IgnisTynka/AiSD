@@ -4,7 +4,7 @@
 std::vector<int> selection_sort(std::vector<int> array) {
     if (array.size() == 0) return array;
 
-    size_t  i, j, min_index;
+    size_t i, j, min_index;
   
     for (i = 0; i < array.size() - 1; i++) { 
         min_index = i; 

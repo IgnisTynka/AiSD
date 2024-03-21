@@ -31,7 +31,7 @@ void heapify(std::vector<int> &array, int N, int i)
 
 std::vector<int> heap_sort(std::vector<int> array) {
     // Build heap (rearrange array)
-    for (int i = array.size() -1 / 2 - 1; i >= 0; i--)
+    for (int i = array.size() / 2 - 1; i >= 0; i--)
         heapify(array, array.size(), i);
  
     // One by one extract an element from heap
