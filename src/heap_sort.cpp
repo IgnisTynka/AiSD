@@ -2,7 +2,6 @@
 
 void heapify(std::vector<int> &array, int N, int i)
 {
- 
     // Initialize largest as root
     int largest = i;
  
@@ -31,11 +30,11 @@ void heapify(std::vector<int> &array, int N, int i)
 
 std::vector<int> heap_sort(std::vector<int> array) {
     // Build heap (rearrange array)
-    for (int i = array.size() / 2 - 1; i >= 0; i--)
+    for (int i = (int)array.size() / 2 - 1; i >= 0; i--)
         heapify(array, array.size(), i);
  
     // One by one extract an element from heap
-    for (int i = array.size() - 1; i > 0; i--) {
+    for (int i = (int)array.size() - 1; i > 0; i--) {
  
         // Move current root to end
         std::swap(array[0], array[i]);

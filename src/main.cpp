@@ -59,7 +59,7 @@ std::vector<int> sort_using_algorithm(std::vector<int> array, int n){
 
 /// Function to print the array
 void print_array(std::vector<int> array){
-    for (size_t i = 0; i < 100 && i < array.size(); i++){
+    for (size_t i = 0; i < 10 && i < array.size(); i++){
         std::cout << array[i] << " ";
     }
     std::cout << std::endl;
