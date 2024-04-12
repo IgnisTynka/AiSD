@@ -53,63 +53,66 @@ std::vector<int> sort_using_algorithm(std::vector<int> array, int n){
         case 6:
             sorted_array = quick_sort_random_pivot(array);
             break;
+        case 7:
+            sorted_array = rev_quick_sort_random_pivot(array);
+            break;
     }
     return sorted_array;
 }
 
 /// Function to print the array
 void print_array(std::vector<int> array){
-    for (size_t i = 0; i < 10 && i < array.size(); i++){
+    for (size_t i = 0; i < 100 && i < array.size(); i++){
         std::cout << array[i] << " ";
     }
     std::cout << std::endl;
 }
 
 // benchmark main function
-// int main(int argc, char const *argv[]) {
-
-//     if (argc != 3 || std::string(argv[1]) != "--algorithm") {
-//         std::cout << "Usage: ./executable --algorithm <algorithm_number>" << std::endl;
-//         return 1;
-//     }
-
-//     // Get algorithm number from command line arguments
-//     int algorithm_number;
-//     std::istringstream(argv[2]) >> algorithm_number;
-
-//     // Read input data from standard input until the end of file (EOF)
-//     std::vector<int> data;
-//     int value;
-//     while (std::cin >> value) {
-//         data.push_back(value);
-//     }
-
-//     // Perform sorting using the specified algorithm
-//     std::vector<int> sorted_data = sort_using_algorithm(data, algorithm_number);
-
-//     return 0;
-// }  
-
-
-// path algorithm_number main function
 int main(int argc, char const *argv[]) {
 
-    if (argc < 3){
-        std::cout << "Error: missing arguments" << std::endl;
+    if (argc != 3 || std::string(argv[1]) != "--algorithm") {
+        std::cout << "Usage: ./executable --algorithm <algorithm_number>" << std::endl;
         return 1;
     }
 
-    std::string file_name = argv[1];
-    int algorithm_number = std::stoi(argv[2]);
-    auto array = read_file(file_name); 
+    // Get algorithm number from command line arguments
+    int algorithm_number;
+    std::istringstream(argv[2]) >> algorithm_number;
 
-    auto sorted_array =  sort_using_algorithm(array, algorithm_number);
+    // Read input data from standard input until the end of file (EOF)
+    std::vector<int> data;
+    int value;
+    while (std::cin >> value) {
+        data.push_back(value);
+    }
 
-    std::cout << "Sorted data: ";
-    print_array(sorted_array);
-    
+    // Perform sorting using the specified algorithm
+    std::vector<int> sorted_data = sort_using_algorithm(data, algorithm_number);
+
     return 0;
-} 
+}  
+
+
+// path algorithm_number main function
+// int main(int argc, char const *argv[]) {
+
+//     if (argc < 3){
+//         std::cout << "Error: missing arguments" << std::endl;
+//         return 1;
+//     }
+
+//     std::string file_name = argv[1];
+//     int algorithm_number = std::stoi(argv[2]);
+//     auto array = read_file(file_name); 
+
+//     auto sorted_array =  sort_using_algorithm(array, algorithm_number);
+
+//     std::cout << "Sorted data: ";
+//     print_array(sorted_array);
+    
+//     return 0;
+// } 
 
 
 // own array main function

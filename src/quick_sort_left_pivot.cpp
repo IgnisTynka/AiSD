@@ -18,7 +18,7 @@ int partition(std::vector<int> &array,int low,int high)
     std::swap(array[i - 1], array[low]); 
     return (i - 1);
 }
-            
+
 void quick_sort_left(std::vector<int> &array,int low,int high)
 {
 	if(low<high)
@@ -31,10 +31,11 @@ void quick_sort_left(std::vector<int> &array,int low,int high)
 	}
 }
   
-
-
 std::vector<int> quick_sort_left_pivot(std::vector<int> array) {
     // Call the quick_sort_left function
     quick_sort_left(array, 0, array.size() - 1);
     return array;
 }
+
+// Wskaźnik na funkcję jako argument
+// void quick_sort_left(std::vector<int> &array,int low,int high, int (*partition)(std::vector<int>&, int, int))

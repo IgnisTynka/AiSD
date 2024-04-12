@@ -20,7 +20,7 @@ std::vector<int> shell_sort(std::vector<int> array) {
         gap = gaps[i];
 
         // Start with the gap and sort the subarrays
-        for (size_t j = gap; j < array.size(); ++j) { 
+        for (size_t j = gap; j < array.size(); j++) { 
             temp = array[j];
             size_t k;
             // Sort the subarray
